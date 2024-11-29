@@ -4,6 +4,7 @@ import React from 'react'
 import { SafeAreaView } from 'react-native';
 import illustration from '../assets/Pedestrian crossing-amico.png'
 import rightArrow from '../assets/angle-small-right (1).png'
+import { Video } from 'expo-av';
 
 export default function Onboarding() {
     const navigation = useNavigation();
@@ -14,9 +15,17 @@ export default function Onboarding() {
         <Text style={{fontFamily: 'Nunito-Bold',  color: '#f6f7f8', fontSize: 37, width: 320, alignSelf:'flex-start'}}>
             Be the Boss{"\n"}of the <Text style={{color:'#FF4C4C'}}>Intersection—</Text> {"\n"}<Text style={{color:'#32CD32'}}>Control</Text> Traffic Lights with a <Text style={{color:'#FFD700'}}>Tap!</Text>
         </Text>
-        <Image
+        {/* <Image
             source={illustration}
             style={{width:300, height:300, marginTop:40}}
+        /> */}
+        <Video
+            source={require('../assets/Pedestrian crossing.mp4')}
+            style={styles.video}
+            resizeMode="cover"
+            shouldPlay
+            isLooping
+            isMuted
         />
         <Pressable style={styles.cto} onPress={() => navigation.navigate('Login')}>
             <Text style={{fontFamily: 'Nunito-Bold', color:'#f6f7f8', fontSize:20}}>
@@ -36,6 +45,11 @@ const styles = StyleSheet.create({
         padding: 25,
         backgroundColor: '#030712',
     },
+    video: {
+        width: 300,
+        height: 300,
+        marginTop: 40
+      },
     cto: {
         backgroundColor: '#32CD32', 
         height: 58, 
