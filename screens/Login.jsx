@@ -1,8 +1,10 @@
-import { StyleSheet, Text, View, Pressable, TextInput, Alert } from 'react-native'
+import { StyleSheet, Text, View, Pressable, TextInput, Alert, Image } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { auth } from '../firebaseConfig'
 import { signInWithEmailAndPassword } from 'firebase/auth'
+
+import rightArrow from '../assets/angle-small-right (1).png'
 
 export default function Login() {
     
@@ -22,6 +24,10 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
+        <Pressable style={styles.backButton} onPress={() => navigation.navigate('Onboarding')}>
+            <Image source={rightArrow} style={{height: 30, width: 30, transform: [{ rotateY: '180deg' }] }} />
+        </Pressable>
+
         <Text style={{fontSize: 36, fontWeight: 'bold', color: '#19191A', opacity: 0.87, marginTop: -50}}>Welcome!</Text>
         <Text style={{fontSize: 16, color: '#19191A', opacity: 0.60}}>Please enter your details to login</Text>
 
@@ -48,7 +54,7 @@ export default function Login() {
         </Pressable>
 
         <Pressable style={{position: 'absolute', bottom: 50}} onPress={() => navigation.navigate('Register')}>
-            <Text style={{fontSize: 16, color: '#19191A', opacity: 0.60}}>
+            <Text style={{fontSize: 16, color: '#f6f7f8', opacity: 0.60, fontFamily: 'Nunito-Regular'}}>
                 Don't have an account? <Text style={{fontWeight: 'bold'}}>Register</Text>
             </Text>
         </Pressable>
@@ -63,7 +69,8 @@ container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 20
+    gap: 20,
+    backgroundColor: '#030712',
 },
 
 inputContainer: {
@@ -103,6 +110,17 @@ buttonText: {
     fontSize: 16,
     color: '#f6f7f8',
     opacity: 0.87,
-    fontWeight: 'bold'
+    fontFamily: 'Nunito-Bold'
+},
+backButton: {
+    backgroundColor: '#1E293B', 
+    height:40, 
+    width:40, 
+    borderRadius: 10, 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 20
 }
 })
