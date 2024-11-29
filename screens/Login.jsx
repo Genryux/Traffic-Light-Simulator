@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Pressable, TextInput, Alert, Image } from 'react-native'
+import { StyleSheet, Text, View, Pressable, TextInput, Alert, Image, SafeAreaView } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { auth } from '../firebaseConfig'
@@ -23,13 +23,13 @@ export default function Login() {
     };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
         <Pressable style={styles.backButton} onPress={() => navigation.navigate('Onboarding')}>
             <Image source={rightArrow} style={{height: 30, width: 30, transform: [{ rotateY: '180deg' }] }} />
         </Pressable>
 
-        <Text style={{fontSize: 36, fontWeight: 'bold', color: '#19191A', opacity: 0.87, marginTop: -50}}>Welcome!</Text>
-        <Text style={{fontSize: 16, color: '#19191A', opacity: 0.60}}>Please enter your details to login</Text>
+        <Text style={{fontSize: 36, color: '#f6f7f8', fontFamily:'Nunito-Bold', opacity: 0.87, marginTop: -50}}>Welcome!</Text>
+        <Text style={{fontSize: 16, fontFamily:'Nunito-Medium', color: '#f6f7f8', opacity: 0.60}}>Please enter your details to login</Text>
 
         <View style={styles.inputContainer}>
             <Text style={styles.label}>Email</Text>
@@ -38,6 +38,7 @@ export default function Login() {
                 keyboardType='email-address'
                 onChangeText={setEmail}
                 placeholder='youremail@example.com'
+                placeholderTextColor={'#6B7280'}
             />
             <Text style={styles.label}>Password</Text>
             <TextInput
@@ -45,7 +46,7 @@ export default function Login() {
                 secureTextEntry
                 onChangeText={setPassword}
                 placeholder='Enter your password'
-
+                placeholderTextColor={'#6B7280'}
             />
         </View>
 
@@ -55,11 +56,11 @@ export default function Login() {
 
         <Pressable style={{position: 'absolute', bottom: 50}} onPress={() => navigation.navigate('Register')}>
             <Text style={{fontSize: 16, color: '#f6f7f8', opacity: 0.60, fontFamily: 'Nunito-Regular'}}>
-                Don't have an account? <Text style={{fontWeight: 'bold'}}>Register</Text>
+                Don't have an account? <Text style={{fontWeight: 'bold', color:'#32CD32'}}>Sign Up</Text>
             </Text>
         </Pressable>
 
-    </View>
+    </SafeAreaView>
   )
 }
 
@@ -81,26 +82,28 @@ inputContainer: {
 },
 input: {
     width: '90%',
-    height: 48,
+    height: 58,
     borderWidth: 1,
-    borderColor: '#19191A',
+    borderColor: '#4B5563',
     borderRadius: 5,
     paddingHorizontal: 20,
-    opacity: 0.87
+    opacity: 0.87,
+    backgroundColor: '#1E293B',
+    color: '#F6F7F8',
 },
 label: {
     alignSelf: 'flex-start',
     marginHorizontal: 22,
-    fontSize: 16,
-    color: '#19191A',
+    fontSize: 20,
+    color: '#f6f7f8',
     opacity: 0.87,
-    fontWeight: 'bold'
+    fontFamily: 'Nunito-Bold'
 },
 
 button: {
-    height: 48,
+    height: 58,
     width: '90%',
-    backgroundColor: '#007BFF',
+    backgroundColor: '#32CD32',
     marginVertical: 10,
     borderRadius: 10,
     justifyContent: 'center',
@@ -120,7 +123,7 @@ backButton: {
     justifyContent: 'center', 
     alignItems: 'center',
     position: 'absolute',
-    top: 0,
+    top: 50,
     left: 20
 }
 })
