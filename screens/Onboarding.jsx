@@ -27,7 +27,7 @@ export default function Onboarding() {
             isLooping
             isMuted
         />
-        <Pressable style={styles.cto} onPress={() => navigation.navigate('Login')}>
+        <Pressable style={styles.cto} onPress={() => navigation.navigate('Register')}>
             <Text style={{fontFamily: 'Nunito-Bold', color:'#f6f7f8', fontSize:20}}>
                 Get Started
             </Text>
