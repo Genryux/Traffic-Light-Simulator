@@ -11,6 +11,7 @@ import Login from './screens/Login';
 import Register from './screens/Register';
 import Home from './screens/Home';
 import Onboarding from './screens/Onboarding';
+import About from './screens/About';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,10 +41,7 @@ export default function App() {
 
   }, [initializing]);
 
-
   if (initializing) return null;
-
-
 
   // Check if fonts are loaded
   if (!fontsLoaded) {
@@ -54,17 +52,20 @@ export default function App() {
     <View style={styles.container}>
       <NavigationContainer>
         <Stack.Navigator>
-          { user ? (
-            <Stack.Screen name='Home' component={Home} options={{headerShown: false}} />
-          ) : (
+          {user ? (
+            // Authenticated Stack
             <>
-              <Stack.Screen name='Onboarding' component={Onboarding}  options={{headerShown: false}}/>
-              <Stack.Screen name='Login' component={Login}  options={{headerShown: false}}/>
-              <Stack.Screen name='Register' component={Register} options={{headerShown: false}}/>
+              <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+              <Stack.Screen name="About" component={About} options={{ headerShown: false }} />
             </>
-          )
-
-          }
+          ) : (
+            // Unauthenticated Stack
+            <>
+              <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
+              <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+              <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
+            </>
+          )}
         </Stack.Navigator>
       </NavigationContainer>
     </View>
