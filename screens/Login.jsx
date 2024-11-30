@@ -24,7 +24,7 @@ export default function Login() {
 
   return (
     <SafeAreaView style={styles.container}>
-        <Pressable style={styles.backButton} onPress={() => navigation.navigate('Onboarding')}>
+        <Pressable style={styles.backButton} onPress={() => navigation.navigate('Register')}>
             <Image source={rightArrow} style={{height: 30, width: 30, transform: [{ rotateY: '180deg' }] }} />
         </Pressable>
 
